@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#7B1FA2</color>
+    <color name="colorPrimaryDark">#6A1B9A</color>
+    <color name="colorAccent">#BB00EE</color>
+    <color name="colorTextBubrule">#EA80FC</color>
+    <color name="colorbackgroundBubrule">#F6E3FD</color>
+    <color name="colorTextBubruleRun">#DB99EC</color>
+
+</resources>

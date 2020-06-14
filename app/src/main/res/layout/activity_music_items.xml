@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MusicItemActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/music_appBar"
+
+        android:layout_width="match_parent"
+        android:fitsSystemWindows="true"
+        android:layout_height="390dp"
+
+        android:theme="@style/AppTheme.AppBarOverlay"
+
+        >
+
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:id="@+id/col"
+            android:layout_width="match_parent"
+
+            app:popupTheme="@style/AppTheme.PopupOverlay"
+            app:titleEnabled="true"
+            app:contentScrim="@color/colorPrimary"
+
+            android:layout_height="match_parent"
+            android:background="@drawable/themeeee"
+            android:fitsSystemWindows="true"
+            app:layout_scrollFlags="exitUntilCollapsed|scroll"
+            app:title="programmer ezzat">
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+
+
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="?attr/colorPrimary"
+                app:layout_scrollFlags="scroll|enterAlwaysCollapsed|enterAlways"
+                app:popupTheme="@style/AppTheme.PopupOverlay"
+                app:titleTextColor="@color/colorbackgroundBubrule" />
+        </android.support.design.widget.CollapsingToolbarLayout>
+
+
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/btn_float"
+        android:layout_below="@+id/music_appBar"
+        android:layout_width="wrap_content"
+        android:fitsSystemWindows="true"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:src="@drawable/ic_play"
+        app:layout_anchor="@id/music_appBar"
+        app:layout_anchorGravity="bottom|right" />
+   <android.support.v4.widget.NestedScrollView
+       android:layout_width="match_parent"
+       android:fitsSystemWindows="true"
+       android:layout_below="@+id/col"
+       app:layout_behavior="@string/appbar_scrolling_view_behavior"
+       android:layout_height="match_parent">
+
+       <android.support.v7.widget.RecyclerView
+           android:id="@+id/rec_items"
+           android:layout_below="@+id/col"
+           android:layout_width="match_parent"
+           android:fitsSystemWindows="true"
+           android:layout_height="match_parent"
+
+           />
+   </android.support.v4.widget.NestedScrollView>
+
+</android.support.design.widget.CoordinatorLayout>

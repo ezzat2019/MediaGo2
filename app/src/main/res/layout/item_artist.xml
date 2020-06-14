@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/play_list_card"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="220dp"
+        android:background="@color/colorbackgroundBubrule"
+        android:layout_height="wrap_content">
+
+
+        <ImageView
+            android:id="@+id/imgar2"
+            android:layout_width="213dp"
+            android:layout_height="152dp"
+
+
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="7dp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/aritist" />
+
+        <TextView
+            android:id="@+id/artist_sub_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="16dp"
+            android:scrollHorizontally="true"
+            android:layout_marginTop="174dp"
+            android:ellipsize="marquee"
+
+
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:singleLine="true"
+            android:text="Last added"
+            android:textColor="#000000"
+            android:textSize="18dp" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="40dp"
+            android:transitionName="good"
+            android:layout_height="40dp"
+            android:layout_alignTop="@+id/imgar2"
+            android:layout_alignParentEnd="true"
+
+
+            android:layout_marginTop="104dp"
+            android:layout_marginEnd="27dp"
+            app:srcCompat="@drawable/ic_play" />
+
+        <!-- <ImageButton
+             android:id="@+id/play_list_image_btn"
+             android:layout_width="20dp"
+             android:layout_height="30dp"
+             android:layout_alignParentTop="true"
+             android:layout_alignParentEnd="true"
+             android:layout_marginTop="208dp"
+             android:layout_marginEnd="22dp"
+             app:srcCompat="@drawable/ic_play_list_setteing" />-->
+    </RelativeLayout>
+</android.support.design.card.MaterialCardView>
