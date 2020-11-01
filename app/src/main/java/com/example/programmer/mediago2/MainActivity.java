@@ -201,13 +201,7 @@ public class MainActivity extends AppCompatActivity
 
     }
 
-    @Override
-    protected void onDestroy() {
-        stopNotification();
-        FragSongs.mediaPlayer.stop();
-        super.onDestroy();
 
-    }
 
     private void createNotification(String s) {
         Intent intent = new Intent(getApplicationContext(), MyService.class);
@@ -223,6 +217,7 @@ public class MainActivity extends AppCompatActivity
         Intent intent = new Intent(getApplicationContext(), MyService.class);
         stopService(intent);
     }
+
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     public void start(int pos) {
@@ -589,8 +584,8 @@ public class MainActivity extends AppCompatActivity
         fragmentList = new ArrayList<>();
         fragmentList.add(songs);
 
-        fragmentList.add(new FragAritist());
-        fragmentList.add(new FragAlbums());
+//        fragmentList.add(new FragAritist());
+//        fragmentList.add(new FragAlbums());
 
 
         myViewPager = new MyViewPager(getSupportFragmentManager(), fragmentList);
@@ -693,4 +688,11 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        FragSongs.mediaPlayer.stop();
+        FragSongs.mediaPlayer.release();
+        stopNotification();
+    }
 }

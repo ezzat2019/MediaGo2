@@ -24,7 +24,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.programmer.mediago2.MainActivity;
 import com.example.programmer.mediago2.R;
@@ -52,7 +51,7 @@ public class FragSongs extends Fragment {
     public static MediaPlayer mediaPlayer;
     private View view;
     private BottomSheetBehavior bottomSheetBehavior;
-    public  static ImageView btn_start, btn_back, btn_next, btn_stop, btn_loop, btn_loop_on;
+    public static ImageView btn_start, btn_back, btn_next, btn_stop, btn_loop, btn_loop_on;
     public static TextView txt_name, txt_sub_name, txt_start, txt_end;
 
 
@@ -115,24 +114,12 @@ public class FragSongs extends Fragment {
         txt_name.setSelected(true);
 
 
-
-    }
-
-    private void createNotification(String  s) {
-        Intent intent=new Intent(getContext().getApplicationContext(), MyService.class);
-        intent.putExtra("name",s);
-
-        ContextCompat.startForegroundService(getContext(),intent);
-
-
+        start2();
 
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
-    @Override
-    public void onStart() {
-        super.onStart();
-
+    private void start2() {
         buildBBtnMusic();
         adapter.onItemSelected(new AdapterOfSongs.onItemClickLissteners() {
             @RequiresApi(api = Build.VERSION_CODES.O)
@@ -205,11 +192,21 @@ public class FragSongs extends Fragment {
         getShared();
     }
 
+    private void createNotification(String s) {
+        Intent intent = new Intent(getContext().getApplicationContext(), MyService.class);
+        intent.putExtra("name", s);
+
+        ContextCompat.startForegroundService(getContext(), intent);
+
+
+    }
+
+
     @RequiresApi(api = Build.VERSION_CODES.O)
     private void getShared() {
 
         SharedPreferences sharedPreferences = getContext().getSharedPreferences("ezzat", Context.MODE_PRIVATE);
-        if (sharedPreferences != null   ) {
+        if (sharedPreferences != null) {
             poss = sharedPreferences.getInt("pos", 0);
 
 
@@ -242,8 +239,6 @@ public class FragSongs extends Fragment {
             buildSeekBar();
 
 
-
-
             txt_name.post(new Runnable() {
                 @Override
                 public void run() {
@@ -262,10 +257,10 @@ public class FragSongs extends Fragment {
             btn_stop.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    if(mediaPlayer.isPlaying()) {
+                    if (mediaPlayer.isPlaying()) {
                         btn_stop.setVisibility(View.GONE);
                         btn_start.setVisibility(View.VISIBLE);
-
+                        stopNotification();
                         mediaPlayer.pause();
                     }
                 }
@@ -273,10 +268,10 @@ public class FragSongs extends Fragment {
             btn_start.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    if(!mediaPlayer.isPlaying()) {
+                    if (!mediaPlayer.isPlaying()) {
                         btn_stop.setVisibility(View.GONE);
                         btn_stop.setVisibility(View.VISIBLE);
-
+                        createNotification(name);
                         mediaPlayer.start();
                     }
                 }
@@ -554,9 +549,9 @@ public class FragSongs extends Fragment {
         txt_name.post(new Runnable() {
             @Override
             public void run() {
-               name=list.get(pos).getName();
+                name = list.get(pos).getName();
                 txt_name.setText(name);
-                if (name!=null)
+                if (name != null)
                     createNotification(name);
 
             }
@@ -587,17 +582,18 @@ public class FragSongs extends Fragment {
 
 
                 mediaPlayer.start();
-                if (name!=null)
-                createNotification(name);
+                if (name != null)
+                    createNotification(name);
             }
         });
 
 
     }
-   void stopNotification(){
-       Intent intent=new Intent(getContext().getApplicationContext(), MyService.class);
-       getActivity().stopService(intent);
-   }
+
+    void stopNotification() {
+        Intent intent = new Intent(getContext().getApplicationContext(), MyService.class);
+        getActivity().stopService(intent);
+    }
 
 
 }

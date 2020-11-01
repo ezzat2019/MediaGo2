@@ -68,7 +68,7 @@ public class FragAlbums extends Fragment {
         adapter.setOnClick(new AdapterOfAlbum.OnItemClickListener() {
             @Override
             public void onClick(int pos) {
-                MainActivity.viewPager.setCurrentItem(0);
+                Toast.makeText(getContext(), pos+" for test ", Toast.LENGTH_SHORT).show();
 
             }
         });

@@ -7,9 +7,9 @@
     tools:context=".fragments.FragSongs">
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rec_songs"
-        android:layout_width="399dp"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="70dp"
+        android:layout_marginBottom="@dimen/_70sdp"
         android:screenReaderFocusable="false"
 
         android:background="@color/colorbackgroundBubrule"
